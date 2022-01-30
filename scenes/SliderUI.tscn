@@ -1,0 +1,69 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/SliderUI.gd" type="Script" id=1]
+[ext_resource path="res://res/theme.tres" type="Theme" id=2]
+
+[node name="Slider" type="VBoxContainer"]
+margin_top = 38.0
+margin_right = 200.0
+margin_bottom = 82.0
+custom_constants/separation = 0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Margin" type="MarginContainer" parent="."]
+margin_right = 200.0
+margin_bottom = 24.0
+custom_constants/margin_right = 5
+custom_constants/margin_left = 5
+
+[node name="HBox" type="HBoxContainer" parent="Margin"]
+margin_left = 5.0
+margin_right = 195.0
+margin_bottom = 24.0
+
+[node name="Title" type="Label" parent="Margin/HBox"]
+margin_top = 5.0
+margin_right = 128.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+theme = ExtResource( 2 )
+text = "slider"
+
+[node name="text" type="LineEdit" parent="Margin/HBox"]
+margin_left = 132.0
+margin_right = 190.0
+margin_bottom = 24.0
+text = "90"
+max_length = 3
+context_menu_enabled = false
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="Button" type="Button" parent="Margin/HBox/text"]
+margin_left = 35.0
+margin_top = 2.0
+margin_right = 56.0
+margin_bottom = 22.0
+hint_tooltip = "Save value as default"
+theme = ExtResource( 2 )
+text = "S"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSlider" type="HSlider" parent="."]
+margin_top = 24.0
+margin_right = 200.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 200, 0 )
+value = 90.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="text_entered" from="Margin/HBox/text" to="." method="_on_text_text_entered"]
+[connection signal="pressed" from="Margin/HBox/text/Button" to="." method="_on_Button_pressed"]
+[connection signal="value_changed" from="HSlider" to="." method="_on_HSlider_value_changed"]

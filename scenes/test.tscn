@@ -1,0 +1,137 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scripts/Menu.gd" type="Script" id=1]
+[ext_resource path="res://scripts/UI.gd" type="Script" id=2]
+[ext_resource path="res://scripts/test.gd" type="Script" id=3]
+
+[sub_resource type="InputEventKey" id=1]
+scancode = 65
+
+[sub_resource type="ShortCut" id=2]
+shortcut = SubResource( 1 )
+
+[sub_resource type="ImageTexture" id=3]
+
+[node name="root" type="Control"]
+margin_right = 658.0
+margin_bottom = 617.0
+mouse_filter = 2
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_left = 300.0
+margin_top = 300.0
+margin_right = 58.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_right = 145.0
+margin_bottom = 20.0
+script = ExtResource( 2 )
+
+[node name="ViewButton" type="MenuButton" parent="MarginContainer/HBoxContainer"]
+margin_right = 42.0
+margin_bottom = 20.0
+shortcut = SubResource( 2 )
+text = "View"
+flat = false
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer/ViewButton"]
+visible = false
+margin_left = -97.5808
+margin_top = 24.3952
+margin_right = -25.5808
+margin_bottom = 62.3952
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/HBoxContainer/ViewButton/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 65.0
+margin_bottom = 31.0
+
+[node name="PopupDialog" type="PopupMenu" parent="MarginContainer/HBoxContainer/ViewButton"]
+margin_top = 29.6985
+margin_right = 20.0
+margin_bottom = 49.6985
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/ViewButton/PopupDialog"]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ViewButton/PopupDialog/MarginContainer"]
+margin_right = 87.0
+margin_bottom = 48.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ViewButton/PopupDialog/MarginContainer/VBoxContainer"]
+margin_right = 87.0
+margin_bottom = 20.0
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/ViewButton/PopupDialog/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_top = 3.0
+margin_right = 60.0
+margin_bottom = 17.0
+text = "Shortcuts"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/ViewButton/PopupDialog/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 64.0
+margin_right = 86.0
+margin_bottom = 20.0
+text = "+"
+icon = SubResource( 3 )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ViewButton/PopupDialog/MarginContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 87.0
+margin_bottom = 48.0
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/HBoxContainer/ViewButton/PopupDialog/MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_right = 60.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 60, 0 )
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/ViewButton/PopupDialog/MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 64.0
+margin_right = 87.0
+margin_bottom = 24.0
+text = "- "
+icon = SubResource( 3 )
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer"]
+margin_left = 46.0
+margin_right = 83.0
+margin_bottom = 20.0
+text = "first"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="MarginContainer/HBoxContainer"]
+margin_left = 87.0
+margin_right = 145.0
+margin_bottom = 20.0
+text = "second"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="gui_input" from="MarginContainer/HBoxContainer/ViewButton" to="MarginContainer/HBoxContainer/ViewButton" method="_on_Menu_gui_input"]

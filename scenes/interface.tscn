@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/SliderUI.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/interface.gd" type="Script" id=2]
+
+[node name="Control" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="settings" type="VBoxContainer" parent="."]
+margin_left = 32.0
+margin_top = 24.0
+margin_right = 232.0
+margin_bottom = 108.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="angle1" parent="settings" instance=ExtResource( 1 )]
+margin_top = 0.0
+margin_bottom = 40.0
+min_value = -90
+max_value = 90
+label = "Angle 1"
+
+[node name="angle2" parent="settings" instance=ExtResource( 1 )]
+margin_top = 44.0
+margin_bottom = 84.0
+min_value = -90
+max_value = 90
+label = "Angle 2"
+
+[node name="width" parent="settings" instance=ExtResource( 1 )]
+margin_top = 88.0
+margin_bottom = 128.0
+min_value = 1
+label = "Width"
+
+[connection signal="value_changed" from="settings/angle1" to="." method="_on_angle1_value_changed"]
+[connection signal="value_changed" from="settings/angle2" to="." method="_on_angle2_value_changed"]
+[connection signal="value_changed" from="settings/width" to="." method="_on_width_value_changed"]
